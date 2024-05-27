@@ -179,7 +179,7 @@ Good
    let myValue = map(x => {
       let addedValue = x + myValue;
       return addedValue;
-   }
+   };
 ```
 
 Rationale:
