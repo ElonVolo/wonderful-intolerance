@@ -169,3 +169,21 @@ Exception: an exceptionally good reason
 
 ### No fat arrow implicit returns
 
+Bad
+```
+  let myValue = map(x => x + myValue);
+```
+
+Good
+```
+   let myValue = map(x => {
+      let addedValue = x + myValue;
+      return addedValue;
+   }
+```
+
+Rationale:
+
+- Debugger-friendly
+- There can be misunderstandings about the implicit returns.
+
