@@ -187,3 +187,117 @@ Rationale:
 - Debugger-friendly
 - There can be misunderstandings about the implicit returns.
 
+### No one line branching statements
+
+Bad
+```
+  if (!scope) return;
+```
+
+Good
+```
+  if (!scope) {
+    return;
+  }
+```
+
+Rationale:
+
+Rationale:
+
+- Debugger friendly.
+- Easier to visual scan and tell riht away it's a branch.
+
+### No function chaining
+
+Bad
+```
+  foo().bar();
+```
+
+Good
+```
+  let resultObject = foo();
+  resultObject.bar();
+```
+
+Rationale:
+
+- Debugger friendly.
+
+### No nested ternaries
+
+Rationale:
+
+- Debugger friendly.
+- Hard to read, especially when taken to extremes.
+
+### No calling functions in function parameters
+
+Bad
+```
+  function lookupUserInfo(userID, getUserTable()) {
+    // whatever
+  }
+```
+
+Good
+```
+  function lookupUserInfo(userID, userTable) {
+    // Whatever
+  }
+
+  let userLookupTable = getUserTable();
+  lookupUserInfo(userID, userLookupTable);
+```
+
+Rationale:
+
+- Debugger friendly.
+- Nesting is for the birds.
+
+### Always used named exports
+
+Rationale:
+- Repetition and consistancy and repetition and consistency and repetition and consistency.
+
+Bad:
+
+```
+export class Foo {
+
+}
+```
+
+Good
+
+```
+class Foo {
+
+}
+
+export { Foo };
+```
+
+### All parameters have types
+#### TODO: stop looking a hypocrite an make sure all my examples have type annotatinos
+
+Bad:
+```
+function sayHello(name) {
+  console.log("Hello " + name);
+}
+```
+
+Good:
+
+```
+function sayHello(name: string) {
+   console.log("Hello " + name);
+}
+```
+
+Rationale:
+
+- In most cases developers should be allowed to know what exactly what's being passed to a parameter
+
