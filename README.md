@@ -301,3 +301,20 @@ Rationale:
 
 - In most cases developers should be allowed to know what exactly what's being passed to a parameter
 
+### No index chanining
+
+Bad
+```
+  const bindings = scope.getBindings()[name];
+```
+
+Good
+```
+  const bindings = scope.getBindings()
+  let binding = bindings[name];
+```
+
+Rationale:
+
+- Debugger friendly.
+
