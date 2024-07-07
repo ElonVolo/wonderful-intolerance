@@ -163,6 +163,22 @@ Rationale
 - More chance for human error.
 - Invites cleverness that violates Kernighan's Law.
 
+### No calling functions in nested ternaries
+
+Bad
+```
+			const newNodes =
+				(typeof insert === 'function') ? insert.call(path, path, i) : insert;
+			path.insertBefore.apply(path, toArray(newNodes));
+```
+
+Good
+```
+			const newNodes =
+				(typeof insert === 'function') ? insert.call(path, path, i) : insert;
+			path.insertBefore.apply(path, toArray(newNodes));
+```
+
 ### No global variables
 
 Exception: an exceptionally good reason
